@@ -20,6 +20,7 @@ jobs:
       - name: Convert PDF to PNG
         run: |
           pdftoppm -png main.pdf preview
+          mv preview-1.png preview.png
           
       - name: Commit and push PNG
         run: |
