@@ -22,6 +22,11 @@ jobs:
           pdftoppm -png main.pdf preview
           mv preview-1.png preview.png
           
+      - name: Set Git identity
+        run: |
+          git config --global user.name "LoloSpirit"
+          git config --global user.email "l.saalmann@icloud.com"
+          
       - name: Commit and push PNG
         run: |
           git add preview.png
