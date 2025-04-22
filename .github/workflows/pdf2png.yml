@@ -16,19 +16,21 @@ jobs:
         run: |
           sudo apt-get update
           sudo apt-get install -y poppler-utils
-          
+
+      - name: Remove old PNG (if any)
+        run: rm -f preview.png
+
       - name: Convert PDF to PNG
         run: |
           pdftoppm -png main.pdf preview
           mv preview-1.png preview.png
-          
-      - name: Set Git identity
+
+      - name: Set Git user identity
         run: |
-          git config --global user.name "LoloSpirit"
-          git config --global user.email "l.saalmann@icloud.com"
-          
+          git config --global user.name "GitHub Actions"
+          git config --global user.email "actions@github.com"
+
       - name: Commit and push PNG
         run: |
           git add preview.png
-          git commit -m "Add PNG version of the document"
-          git push
+          git diff --cached --quiet preview.png || (git commit -m "Update preview.png" && git push)
