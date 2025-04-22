@@ -1,0 +1,235 @@
+%------------PACKAGES----------------
+\documentclass[a4paper,11pt]{article}
+
+\usepackage{graphicx}
+\usepackage{tikz}
+\usepackage{tikz}
+\usetikzlibrary{calc} % Required for coordinate calculations
+\usepackage{verbatim}
+\usepackage{titlesec}
+\usepackage{color}
+\usepackage{enumitem}
+\usepackage{fancyhdr}
+\usepackage{tabularx} 
+\usepackage{latexsym}
+\usepackage{marvosym}
+\usepackage[empty]{fullpage}
+\usepackage[english]{babel}
+\usepackage[colorlinks=true, linkcolor=black, urlcolor=black]{hyperref}
+\usepackage[normalem]{ulem}
+%-----------------------------------------
+
+\input glyphtounicode
+\pdfgentounicode=1 % ensures pdfs generated are ats readable
+
+\usepackage[default]{sourcesanspro} % uses the font source sans pro
+\urlstyle{same}
+
+\pagestyle{fancy} % set page style to one configured by fancyhdr
+\fancyhf{} % clear all header and footer fields
+
+\renewcommand{\headrulewidth}{0in} % sets thickness of linerule under header to zero
+\renewcommand{\footrulewidth}{0in} % sets thickness of linerule over footer to zero
+
+\setlength{\tabcolsep}{0in} % sets thickness of column separator in tables to zero
+
+% origin of the document is one inch from the top and from and the left
+% oddsidemargin and evensidemargin both refer to the left margin
+% right margin is indirectly set using oddsidemargin
+\addtolength{\oddsidemargin}{-0.5in}
+\addtolength{\topmargin}{-0.5in}
+
+\addtolength{\textwidth}{1.0in} % sets width of text area in the page to one inch
+\addtolength{\textheight}{1.0in} % sets height of text area in the page to one inch
+
+\raggedbottom{} % makes all pages the height of current page, no extra vertical space added
+\raggedright{} % makes all pages the width of current page, no extra horizontal space added
+%------------------------------------------
+
+\titleformat{\section}
+  {\scshape\large}{}
+    {0em}{\color{black}}[\color{black}\titlerule\vspace{0pt}]
+%-------------------------------------
+
+
+\newcommand{\roundpic}[2][1.5cm]{%
+  \begin{tikzpicture}[remember picture,overlay]
+    \clip (current page.north east) ++(-2.8cm,-2.4cm) circle (#1);
+    \node at ($(current page.north east)+(-2.8cm,-2.4cm)$) {\includegraphics[width=1.7\dimexpr#1]{#2}};
+    \draw[thick, black] ($(current page.north east)+(-2.8cm,-2.4cm)$) circle (#1);
+  \end{tikzpicture}
+}
+
+
+%--------REDEFINITIONS----------------
+% redefines the style of the bullet point
+\renewcommand\labelitemii{$\vcenter{\hbox{\tiny$\bullet$}}$}
+
+% redefines the underline depth to 2pt
+\renewcommand{\ULdepth}{2pt}
+%-------------------------------------
+
+
+% resumeItem renders a bullet point
+\newcommand{\resumeItem}[1]{
+  \item\small{#1}
+}
+
+% commands to start and end itemization of resumeItem, rightmargin set to 0.11in to avoid the overflow of resumetItem beyond whatever resumeItemHeading is being used
+\newcommand{\resumeItemListStart}{\begin{itemize}[rightmargin=0.11in]}
+\newcommand{\resumeItemListEnd}{\end{itemize}}
+
+% resumeSectionType renders a bolded type to be used under a section, used as skill type here, middle element is used to keep ":"s in the same vertical line
+\newcommand{\resumeSectionType}[3]{
+  \item\begin{tabular*}{0.96\textwidth}[t]{
+    p{0.15\linewidth}p{0.02\linewidth}p{0.81\linewidth}
+  }
+    \textbf{#1} & #2 & #3
+  \end{tabular*}\vspace{-2pt}
+}
+
+\newcommand{\resumeTrioHeading}[3]{
+  \item\small{
+    \begin{tabular*}{0.96\textwidth}[t]{
+      l@{\extracolsep{\fill}}c@{\extracolsep{\fill}}r
+    }
+      \textbf{#1} & \textit{#2} & #3
+    \end{tabular*}
+  }
+}
+
+\newcommand{\resumeQuadHeading}[4]{
+  \item
+  \begin{tabular*}{0.96\textwidth}[t]{l@{\extracolsep{\fill}}r}
+    \textbf{#1} & #2 \\
+    \textit{\small#3} & \textit{\small #4} \\
+  \end{tabular*}
+}
+
+% resumeQuadHeadingChild renders the second row of resumeQuadHeading, can be used for experience if different roles in the same company need to added
+\newcommand{\resumeQuadHeadingChild}[2]{
+  \item
+  \begin{tabular*}{0.96\textwidth}[t]{l@{\extracolsep{\fill}}r}
+    \textbf{\small#1} & {\small#2} \\
+  \end{tabular*}
+}
+
+% commands to start and end itemization of resumeQuadHeading, lefmargin for left indent of 0.15in for resumeItems
+\newcommand{\resumeHeadingListStart}{
+  \begin{itemize}[leftmargin=0.15in, label={}]
+}
+\newcommand{\resumeHeadingListEnd}{\end{itemize}}
+%-------------------------------------------
+\begin{document}
+
+\roundpic[1.5cm]{Pic.png}
+
+%-----------CONTACT DETAILS------------------
+\begin{tabular*}{\textwidth}{l@{\extracolsep{\fill}}r}
+  \textbf{\Huge Lorenz Saalmann} \\[2pt] & % row = 1, col = 1
+  \\ % row = 1, col = 2
+  \href{mailto:l.saalmann@icloud.com}{\uline{l.saalmann@icloud.com}} $|$ % row = 2, col = 1
+  \href{https://www.linkedin.com/in/lorenzsaalmann}{\uline{LinkedIn}} $|$ % row = 2, col = 1
+  \href{https://github.com/LoloSpirit}{\uline{GitHub}}
+  
+  &
+  
+  
+  
+\end{tabular*}
+%--------------------------------------------
+
+
+%-----------SUMMARY--------------------------
+\section{About me}
+\small{
+  I am a 22-year-old motivated student in \textbf{\textsc{Physics and Technology for Space Application}} with a passion for coding and solving problems. I have worked for 4 years as a \textbf{\textsc{Virtual Reality Software Developer}} in a challenging startup environment during my studies. My strengths are in learning and absorbing new things eagerly and quickly. 
+}
+%--------------------------------------------
+
+%-----------EDUCATION------------------------- 
+
+\section{Education}
+  \resumeHeadingListStart{}
+    \resumeQuadHeading{Otaki College - Gap year}{Otaki, New Zealand}
+    {Project 'SS Otaki Virtual Reality Experience' with Unity as part of the Digital Media Program}{2017 -- 2018}
+
+    \resumeQuadHeading{High School - grade 1.0}{Gesamtschule-Gießen-Ost}
+    {Honoured for outstanding achievements in physics, finalist in the nationwide Software Challenge}{2018 -- 2021}
+
+    \resumeQuadHeading{Justus Liebig University / Technische Hochschule Mittelhessen - B.Sc. grade 1.8}{Gießen, Germany}{“Physics and technology for space applications"}{2021 -- Feb. 2025}
+    \resumeItemListStart{}
+      \resumeItem{Calculus, Linear algebra and Physics (theoretical and applied) related to Space and Aviation}
+      \resumeItem{Electrical and Information Engineering, Computer Science, Robotics}
+    \resumeItem{Bachelor Thesis: "Development and Ion-Optical Simulation of an Electron-Impact Ionization Time-of-Flight Mass Spectrometer" - grade 0.7 \href{https://github.com/LoloSpirit/Bachelorthesis/blob/main/Versions/Bachelorthesis_Saalmann_2025_final.pdf}{\uline{[PDF]}}}
+    \resumeItemListEnd{}
+
+    \resumeQuadHeading{Justus Liebig University / Technische Hochschule Mittelhessen - M.Sc.}{Gießen, Germany}
+    {“Physics and technology for space applications"}{2024 -- now}
+  \resumeHeadingListEnd{}
+%---------------------------------------------
+
+%-----------EXPERIENCE-----------------------
+
+\section{Experience}
+\resumeHeadingListStart{}
+  \resumeQuadHeading{Working student as a Unity VR Software Developer}{May 2020 -- now}
+  {Cognilize Gmbh}{Remote, Germany/U.S.}
+    \resumeItemListStart{}
+      \resumeItem{Development and Software Architecture in Unity and C\#}
+      \resumeItem{Leading role in Networking Architecture using Mirror-Networking and Netcode for GO}
+      \resumeItem{App Development and UI/UX design, worked independently and with close international collaboration}
+      \resumeItem{Creating prototypes and demos with tight deadlines and refactoring growing codebases regularly}
+      \resumeItem{Test driven development for VR applications and reducing dependencies via strict interface abstractions}
+    \resumeItemListEnd{}
+
+  \resumeQuadHeading{Academic project in the Ion Thrusters Lab}{Dec. 2023 -- June 2024}
+  {Justus Liebig Universität}{Gießen, Germany}
+    \resumeItemListStart{}
+      \resumeItem{CAD design and construction of a flow board for supplying nitrogen and oxygen to an ion thruster}
+    \resumeItemListEnd{}
+
+  \resumeQuadHeading{Internship}{March 2024 -- July 2024}{Tesat Spacecom}{Backnang, Germany}
+    \resumeItemListStart{}
+      \resumeItem{Work in digital circuit design, development of circuit diagrams and layouts for PCBs}
+    \resumeItem{Analytical work in the lab, and development of spacecraft simulation software for communication}
+    \resumeItemListEnd{}
+
+    \resumeQuadHeading{Internship}{March 2025 -- May 2025}{Kyoto Institute of Technology}{Kyoto, Japan}
+    \resumeItemListStart{}
+      \resumeItem{Research in the department of Athmospheric Pressure Plasma Physics}
+      \resumeItem{Investigating the Effects of Atmospheric
+      Pressure Plasma Radiation on the
+      Sterilization of Cladosporium
+      sphaerospermum \href{https://github.com/LoloSpirit/Internship_KIT/blob/main/main.pdf}{\uline{[PDF]}}}
+    \resumeItemListEnd{}
+\resumeHeadingListEnd{}
+%---------------------------------------------
+
+%--------------SKILLS------------------------
+\section*{Tools \& Technologies}
+\begin{center}
+  \includegraphics[height=.9cm]{logos/unity.png}
+  \includegraphics[height=.9cm]{logos/arduino.png}
+  \includegraphics[height=.9cm]{logos/jetbrains.png}
+  \includegraphics[height=.9cm]{logos/blender.png}
+  \includegraphics[height=.9cm]{logos/c.png}
+  \includegraphics[height=.9cm]{logos/c++.png}
+  \includegraphics[height=.9cm]{logos/csharp.png}
+  \includegraphics[height=.9cm]{logos/github.png}
+  \includegraphics[height=.9cm]{logos/gitlab.png}
+  \includegraphics[height=.9cm]{logos/godot.png}
+  \includegraphics[height=.9cm]{logos/python.png}
+  \includegraphics[height=.9cm]{logos/pycharm.png}
+  \includegraphics[height=.9cm]{logos/vscode.png}
+  \includegraphics[height=.9cm]{logos/git.png}
+  \includegraphics[height=.9cm]{logos/latex.png}
+  \includegraphics[height=.9cm]{logos/docker.png}
+  \includegraphics[height=.9cm]{logos/firebase.png}
+  \includegraphics[height=.9cm]{logos/illustrator.png}
+  \includegraphics[height=.9cm]{logos/matlab.png}
+\end{center}
+%--------------------------------------------
+
+\end{document}
+
