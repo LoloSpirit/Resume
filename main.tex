@@ -54,9 +54,11 @@
 
 \newcommand{\roundpic}[2][1.5cm]{%
   \begin{tikzpicture}[remember picture,overlay]
+    % Background circle
+    \fill[gray!20] (current page.north east) ++(-2.8cm,-2.4cm) circle (#1);
     \clip (current page.north east) ++(-2.8cm,-2.4cm) circle (#1);
     \node at ($(current page.north east)+(-2.8cm,-2.4cm)$) {\includegraphics[width=1.7\dimexpr#1]{#2}};
-    \draw[thick, black] ($(current page.north east)+(-2.8cm,-2.4cm)$) circle (#1);
+    \draw[thick, gray] ($(current page.north east)+(-2.8cm,-2.4cm)$) circle (#1);
   \end{tikzpicture}
 }
 
@@ -132,9 +134,7 @@
   \href{https://www.linkedin.com/in/lorenzsaalmann}{\uline{LinkedIn}} $|$ % row = 2, col = 1
   \href{https://github.com/LoloSpirit}{\uline{GitHub}}
   
-  &
-  
-  
+  &  
   
 \end{tabular*}
 %--------------------------------------------
